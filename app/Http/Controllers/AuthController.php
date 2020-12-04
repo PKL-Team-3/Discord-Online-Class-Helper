@@ -3,20 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+
 
 class AuthController extends Controller
 {
     public function register(Request $request)
     {
         $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|string|email|unique:users',
+            'username' => 'required|string',
             'password' => 'required|string|confirmed'
         ]);
 
         $user = new User([
-            'name' => $request->name,
-            'email' => $request->email,
+            'username' => $request->username,
             'password' => bcrypt($request->password)
         ]);
 
@@ -25,8 +25,7 @@ class AuthController extends Controller
         return response()->json([
             'success' => true,
             'id' => $user->id,
-            'name' => $user->name,
-            'email' => $user->email,
+            'username' => $user->username,
         ], 201);
     }
 
