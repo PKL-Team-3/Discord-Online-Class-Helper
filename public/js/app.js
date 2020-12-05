@@ -95386,18 +95386,6 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["ma
 
 function Register() {
   var classes = useStyles();
-  var bull = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: classes.bullet
-  }, "\u2022");
-
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(true),
-      _React$useState2 = _slicedToArray(_React$useState, 2),
-      checked = _React$useState2[0],
-      setChecked = _React$useState2[1];
-
-  var handleChange = function handleChange(event) {
-    setChecked(event.target.checked);
-  };
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
       _useState2 = _slicedToArray(_useState, 2),

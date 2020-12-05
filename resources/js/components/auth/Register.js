@@ -39,13 +39,6 @@ const useStyles = makeStyles({
 
 function Register() {
     const classes = useStyles();
-    const bull = <span className={classes.bullet}>•</span>;
-
-    const [checked, setChecked] = React.useState(true);
-
-    const handleChange = event => {
-        setChecked(event.target.checked);
-    };
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");

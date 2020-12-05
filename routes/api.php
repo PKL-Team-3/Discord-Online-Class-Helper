@@ -24,6 +24,7 @@ Route::group([
 ], function () {
     Route::post('login', [AuthController::class, 'login']);
     Route::post('signup', [AuthController::class, 'register']);
+    Route::patch('sync/{user}', [AuthController::class, 'sync']);
   
     Route::group([
       'middleware' => 'auth:api'

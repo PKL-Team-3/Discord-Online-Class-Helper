@@ -10,6 +10,21 @@ use Carbon\Carbon;
 
 class AuthController extends Controller
 {
+    public function sync(Request $request, User $user){
+        $result = $request->validate([
+            'role' => 'required',
+        ]);
+
+        $user->fill($result);
+        $user->update();
+
+        return response()->json([
+            'success' => true,
+            'username' => $user->username,
+            'role' => $user->role
+        ], 200);
+    }
+
     public function register(Request $request)
     {
         $request->validate([
