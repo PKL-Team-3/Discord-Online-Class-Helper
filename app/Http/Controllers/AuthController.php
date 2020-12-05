@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Auth;
+use Carbon\Carbon;
 
 
 class AuthController extends Controller
@@ -43,12 +45,12 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|string|email',
+            'username' => 'required|string|',
             'password' => 'required|string',
             'remember_me' => 'boolean'
         ]);
 
-        $credentials = request(['email', 'password']);
+        $credentials = request(['username', 'password']);
 
         if (!Auth::attempt($credentials))
             return response()->json([
@@ -65,8 +67,7 @@ class AuthController extends Controller
         return response()->json([
             'success' => true,
             'id' => $user->id,
-            'name' => $user->name,
-            'email' => $user->email,
+            'username' => $user->username,
             'access_token' => $tokenResult->accessToken,
             'token_type' => 'Bearer',
             'expires_at' => Carbon::parse(

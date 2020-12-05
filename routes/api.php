@@ -15,6 +15,10 @@ use App\Http\Controllers\AuthController;
 |
 */
 
+Route::get('/demo-url',  function  (Request $request)  {
+    return response()->json(['Laravel 7 CORS Demo']);
+ });
+
 Route::group([
     'prefix' => 'auth'
 ], function () {

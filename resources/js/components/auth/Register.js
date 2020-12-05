@@ -6,20 +6,10 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
-import InputLabel from "@material-ui/core/InputLabel";
-import Input from "@material-ui/core/Input";
-import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from "@material-ui/core/IconButton";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import Box from "@material-ui/core/Box";
-import FormControl from "@material-ui/core/FormControl";
-import clsx from "clsx";
-import Grid from "@material-ui/core/Grid";
-import Checkbox from "@material-ui/core/Checkbox";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
+import axios from "axios";
 import Link from "@material-ui/core/Link";
-import { lightGreen } from "@material-ui/core/colors";
 
 const useStyles = makeStyles({
     bullet: {
@@ -57,14 +47,24 @@ function Register() {
         setChecked(event.target.checked);
     };
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        console.log(username, password, confirmPassword);
-    };
-
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+
+    const [isRegistered, setIsRegistered] = useState(false);
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        console.log(username, password, confirmPassword);
+
+        const user = {
+            username: username,
+            password: password,
+            password_confirmation: confirmPassword
+        };
+        axios.post("/api/auth/signup", user);
+        setIsRegistered(true);
+    };
 
     return (
         <React.Fragment>
