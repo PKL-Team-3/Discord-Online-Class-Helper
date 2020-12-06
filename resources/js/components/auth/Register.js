@@ -9,7 +9,10 @@ import TextField from "@material-ui/core/TextField";
 import IconButton from "@material-ui/core/IconButton";
 import Box from "@material-ui/core/Box";
 import axios from "axios";
-import Link from "@material-ui/core/Link";
+import Ling from "@material-ui/core/Link";
+import { Link, useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { register } from "../../actions/index";
 
 const useStyles = makeStyles({
     bullet: {
@@ -39,30 +42,44 @@ const useStyles = makeStyles({
 
 function Register() {
     const classes = useStyles();
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const isRegistered = useSelector(state => state.isRegistered);
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-
-    const [isRegistered, setIsRegistered] = useState(false);
 
     const handleSubmit = e => {
         e.preventDefault();
         console.log(username, password, confirmPassword);
 
         const user = {
+            id:
+                Math.random()
+                    .toString(36)
+                    .substring(2, 15) +
+                Math.random()
+                    .toString(36)
+                    .substring(2, 15),
             username: username,
             password: password,
             password_confirmation: confirmPassword
         };
-        axios.post("/api/auth/signup", user);
-        setIsRegistered(true);
+        axios.post("/api/auth/signup", user).then(res => {
+            console.log(res);
+            dispatch(register());
+            history.push("/login");
+        });
     };
 
     return (
         <React.Fragment>
             <Box justifyContent="center" display="flex" className="mt-5">
-                <IconButton className={`${classes.holder}`} />
+                <img
+                    src="https://cdn.discordapp.com/attachments/698132350067802152/785165420621070366/logo.png"
+                    className={classes.holder}
+                />
             </Box>
             <Card
                 className={classes.marginAutoContainer}
@@ -122,7 +139,9 @@ function Register() {
                         className="px-2 mt-2"
                         gutterBottom
                     >
-                        <Link href="/login">Login</Link>
+                        <Link to="/login">
+                            <Ling>Login</Ling>
+                        </Link>
                     </Typography>
                 </CardContent>
             </Card>

@@ -28,13 +28,15 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
+            'id' => 'required',
             'username' => 'required|string',
-            'password' => 'required|string|confirmed'
+            'password' => 'required|string|confirmed',
         ]);
 
         $user = new User([
+            'id' => $request->id,
             'username' => $request->username,
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
         ]);
 
         $user->save();
