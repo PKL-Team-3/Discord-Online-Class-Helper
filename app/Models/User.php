@@ -49,4 +49,8 @@ class User extends Authenticatable
 
     public $incrementing = false; 
 
+    public function pengumumans(){
+        return $this->hasMany(Pengumuman::class);
+    }
+
 }

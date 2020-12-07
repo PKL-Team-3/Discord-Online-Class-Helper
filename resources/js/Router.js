@@ -7,6 +7,7 @@ import Home from "./components/views/home";
 import { createStore } from "redux";
 import ProtectedRoute from "./ProtectedRoute";
 import GuestRoute from "./GuestRoute";
+import Pengumuman from "./components/views/Pengumuman";
 
 //Store
 
@@ -20,6 +21,7 @@ const Main = props => (
     <Switch>
         {/*User might LogIn*/}
         <ProtectedRoute exact path="/" component={Home} />
+        <ProtectedRoute exact path="/pengumuman" component={Pengumuman} />
         {/*User will LogIn*/}
         <GuestRoute exact path="/login" component={Login} />
         <GuestRoute exact path="/register" component={Register} />

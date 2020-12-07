@@ -40,6 +40,12 @@ export default function ButtonAppBar() {
                     <Typography variant="h6" className={classes.title}>
                         Discord Class
                     </Typography>
+                    <Button color="inherit">Jadwal</Button>
+                    <Button color="inherit">Absensi</Button>
+                    <Button color="inherit">Pengumuman</Button>
+                    <Button color="inherit">Post</Button>
+                    <Button color="inherit">Materi Pembelajaran</Button>
+                    <Button color="inherit">Quiz</Button>
                     <IconButton
                         aria-label="account of current user"
                         aria-controls="menu-appbar"
