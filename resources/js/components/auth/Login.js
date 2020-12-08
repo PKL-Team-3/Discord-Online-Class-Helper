@@ -44,7 +44,6 @@ function Login() {
     const classes = useStyles();
     const dispatch = useDispatch();
     const history = useHistory();
-    const isLogged = useSelector(state => state.isLogged);
     const [checked, setChecked] = useState(true);
     const handleChange = event => {
         setChecked(event.target.checked);
@@ -69,9 +68,7 @@ function Login() {
         });
     };
 
-    return isLogged ? (
-        <Redirect to="/"></Redirect>
-    ) : (
+    return (
         <React.Fragment>
             <Box justifyContent="center" display="flex" className="mt-5">
                 <img
