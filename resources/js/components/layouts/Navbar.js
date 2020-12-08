@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
+import { Link, useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -27,6 +28,13 @@ const useStyles = makeStyles(theme => ({
 
 export default function ButtonAppBar() {
     const classes = useStyles();
+
+    const history = useHistory();
+
+    const logoutHandler = () => {
+        localStorage.removeItem("token");
+        history.push("/login");
+    };
 
     return (
         <div className={classes.root}>
@@ -54,7 +62,9 @@ export default function ButtonAppBar() {
                     >
                         <AccountCircle />
                     </IconButton>
-                    <Button color="inherit">Logout</Button>
+                    <Button onClick={logoutHandler} color="inherit">
+                        Logout
+                    </Button>
                 </Toolbar>
             </AppBar>
         </div>

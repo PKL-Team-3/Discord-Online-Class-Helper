@@ -6,7 +6,6 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
-import IconButton from "@material-ui/core/IconButton";
 import Box from "@material-ui/core/Box";
 import axios from "axios";
 import Ling from "@material-ui/core/Link";
@@ -44,7 +43,6 @@ function Register() {
     const classes = useStyles();
     const dispatch = useDispatch();
     const history = useHistory();
-    const isRegistered = useSelector(state => state.isRegistered);
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -68,7 +66,6 @@ function Register() {
         };
         axios.post("/api/auth/signup", user).then(res => {
             console.log(res);
-            dispatch(register());
             history.push("/login");
         });
     };
