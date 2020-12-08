@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PengumumanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,13 @@ use App\Http\Controllers\AuthController;
 Route::get('/demo-url',  function  (Request $request)  {
     return response()->json(['Laravel 7 CORS Demo']);
  });
+ Route::group([
+    'middleware' => 'auth:api'
+  ], function() {
+    Route::post('pengumuman/create',[PengumumanController::class, 'create']);
+
+  });
+
 
 Route::group([
     'prefix' => 'auth'
@@ -31,5 +39,6 @@ Route::group([
     ], function() {
         Route::get('logout', [AuthController::class, 'logout']);
         Route::get('user', [AuthController::class, 'user']);
+
     });
 });

@@ -16,12 +16,10 @@ const darkTheme = createMuiTheme({
     palette: {
         type: "dark",
         primary: {
-            // Purple and green play nicely together.
             main: "#92CBC5"
         },
         secondary: {
-            // This is green.A700 as hex.
-            main: "#92CBC5"
+            main: "#212121"
         }
     }
 });

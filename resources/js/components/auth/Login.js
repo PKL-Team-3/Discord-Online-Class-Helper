@@ -12,7 +12,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Ling from "@material-ui/core/Link";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../actions/index";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, Redirect } from "react-router-dom";
 
 const useStyles = makeStyles({
     bullet: {
@@ -64,11 +64,14 @@ function Login() {
         axios.post("/api/auth/login", user).then(res => {
             console.log(res.data.access_token);
             dispatch(login());
+            localStorage.setItem("token", res.data.access_token);
             history.push("/");
         });
     };
 
-    return (
+    return isLogged ? (
+        <Redirect to="/"></Redirect>
+    ) : (
         <React.Fragment>
             <Box justifyContent="center" display="flex" className="mt-5">
                 <img
