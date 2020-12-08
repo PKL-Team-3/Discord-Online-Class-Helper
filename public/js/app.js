@@ -98444,9 +98444,6 @@ function Register() {
   var classes = useStyles();
   var dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_12__["useDispatch"])();
   var history = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_11__["useHistory"])();
-  var isRegistered = Object(react_redux__WEBPACK_IMPORTED_MODULE_12__["useSelector"])(function (state) {
-    return state.isRegistered;
-  });
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
       _useState2 = _slicedToArray(_useState, 2),

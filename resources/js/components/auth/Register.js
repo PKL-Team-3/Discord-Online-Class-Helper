@@ -43,7 +43,6 @@ function Register() {
     const classes = useStyles();
     const dispatch = useDispatch();
     const history = useHistory();
-    const isRegistered = useSelector(state => state.isRegistered);
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
