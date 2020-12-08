@@ -98250,9 +98250,6 @@ function Login() {
   var classes = useStyles();
   var dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_12__["useDispatch"])();
   var history = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_14__["useHistory"])();
-  var isLogged = Object(react_redux__WEBPACK_IMPORTED_MODULE_12__["useSelector"])(function (state) {
-    return state.isLogged;
-  });
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
       _useState2 = _slicedToArray(_useState, 2),
@@ -98288,9 +98285,7 @@ function Login() {
     });
   };
 
-  return isLogged ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__["Redirect"], {
-    to: "/"
-  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Box__WEBPACK_IMPORTED_MODULE_8__["default"], {
     justifyContent: "center",
     display: "flex",
     className: "mt-5"
