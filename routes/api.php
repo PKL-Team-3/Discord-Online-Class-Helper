@@ -23,7 +23,8 @@ Route::get('/demo-url',  function  (Request $request)  {
     'middleware' => 'auth:api'
   ], function() {
     Route::post('pengumuman/create',[PengumumanController::class, 'create']);
-
+    Route::get('pengumuman/get', [PengumumanController::class, 'get']);
+    Route::get('pengumuman/getUsername', [PengumumanController::class, 'getUsername']);
   });
 
 
