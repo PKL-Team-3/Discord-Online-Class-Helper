@@ -27,6 +27,7 @@ const Main = props => (
     <Switch>
         <ProtectedRoute exact path="/test" component={Testbar} />
         {/*User might LogIn*/}
+
         <ProtectedRoute exact path="/" component={Home} />
         <ProtectedRoute exact path="/absensi" component={Absensi} />
         <ProtectedRoute exact path="/jadwal" component={Jadwal} />

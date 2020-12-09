@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import Pengumuman from "../views/Pengumuman";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -32,107 +33,86 @@ export default function Pengumumans() {
         setExpanded(isExpanded ? panel : false);
     };
 
+    const [pengumumans, setPengumumans] = useState([]);
+    const [users, setUsers] = useState([]);
+    const [datas, setDatas] = useState([]);
+
+    const token = localStorage.getItem("token");
+
+    const gett = axios.create({
+        baseURL: "http://127.0.0.1:8000/",
+        headers: { Authorization: "Bearer " + token }
+    });
+
+    const getPengumumans = async () => {
+        const pengumuman = await gett.get("/api/pengumuman/get");
+
+        setPengumumans(pengumuman.data.data);
+        setUsers(pengumuman.data.user);
+
+        console.log(result);
+        const a = pengumuman.data.data;
+        const b = pengumuman.data.user;
+
+        const result = a.map(function(el, x = 0) {
+            var o = Object.assign({}, el);
+            o.username = b[x];
+            x++;
+            console.log(x);
+            return o;
+        });
+        setDatas(result);
+
+        const c = [...a, ...b];
+        console.log(a);
+        console.log(b);
+        console.log(c);
+        console.log(result);
+        // console.log(pengumuman);
+        // setPengumumans(pengumuman.data.data);
+        // setUsers(pengumuman.data.user);
+        // console.log(users);
+        // console.log(pengumumans);
+        // const test = Object.assign({}, users, pengumumans);
+        // setDatas(Object.assign({}, users, pengumumans));
+        // console.log(datas);
+    };
+
+    useEffect(() => {
+        getPengumumans();
+        return () => {};
+    }, []);
+
     return (
         <div className={classes.root}>
-            <Accordion
-                className={classes.bg}
-                expanded={expanded === "panel1"}
-                onChange={handleChange("panel1")}
-            >
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1bh-content"
-                    id="panel1bh-header"
-                >
-                    <Typography className={classes.heading}>
-                        General settingsGeneral settingsGeneral settingsGeneral
-                        settingsGeneral settingsGeneral settingsGeneral
-                        settingsGeneral settingsGeneral settingsGeneral
-                        settingsGeneral settingsGeneral settingsGeneral
-                        settingsGeneral settingsGeneral settingsGeneral
-                        settingsGeneral settingsGeneral settingsGeneral
-                        settingsGeneral settings
-                    </Typography>
-                    <Typography className={classes.secondaryHeading}>
-                        I am an accordion
-                    </Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <Typography>
-                        Nulla facilisi. Phasellus sollicitudin nulla et quam
-                        mattis feugiat. Aliquam eget maximus est, id dignissim
-                        quam.
-                    </Typography>
-                </AccordionDetails>
-            </Accordion>
-            <Accordion
-                expanded={expanded === "panel2"}
-                onChange={handleChange("panel2")}
-            >
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel2bh-content"
-                    id="panel2bh-header"
-                >
-                    <Typography className={classes.heading}>Users</Typography>
-                    <Typography className={classes.secondaryHeading}>
-                        You are currently not an owner
-                    </Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <Typography>
-                        Donec placerat, lectus sed mattis semper, neque lectus
-                        feugiat lectus, varius pulvinar diam eros in elit.
-                        Pellentesque convallis laoreet laoreet.
-                    </Typography>
-                </AccordionDetails>
-            </Accordion>
-            <Accordion
-                expanded={expanded === "panel3"}
-                onChange={handleChange("panel3")}
-            >
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel3bh-content"
-                    id="panel3bh-header"
-                >
-                    <Typography className={classes.heading}>
-                        Advanced settings
-                    </Typography>
-                    <Typography className={classes.secondaryHeading}>
-                        Filtering has been entirely disabled for whole web
-                        server
-                    </Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <Typography>
-                        Nunc vitae orci ultricies, auctor nunc in, volutpat
-                        nisl. Integer sit amet egestas eros, vitae egestas
-                        augue. Duis vel est augue.
-                    </Typography>
-                </AccordionDetails>
-            </Accordion>
-            <Accordion
-                expanded={expanded === "panel4"}
-                onChange={handleChange("panel4")}
-            >
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel4bh-content"
-                    id="panel4bh-header"
-                >
-                    <Typography className={classes.heading}>
-                        Personal data
-                    </Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <Typography>
-                        Nunc vitae orci ultricies, auctor nunc in, volutpat
-                        nisl. Integer sit amet egestas eros, vitae egestas
-                        augue. Duis vel est augue.
-                    </Typography>
-                </AccordionDetails>
-            </Accordion>
+            {datas.map(data => {
+                const { title, content, id, created_at, username } = data;
+                return (
+                    <Accordion
+                        key={id}
+                        className={classes.bg}
+                        expanded={expanded === `panel${id}`}
+                        onChange={handleChange(`panel${id}`)}
+                    >
+                        <AccordionSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="panel1bh-content"
+                            id="panel1bh-header"
+                        >
+                            <Typography className={classes.heading}>
+                                {title}
+                            </Typography>
+
+                            <Typography className={classes.secondaryHeading}>
+                                {username} | Date: {created_at.substring(0, 10)}
+                            </Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            <Typography>{content}</Typography>
+                        </AccordionDetails>
+                    </Accordion>
+                );
+            })}
         </div>
     );
 }
