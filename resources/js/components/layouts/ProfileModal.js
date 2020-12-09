@@ -5,6 +5,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Button from "@material-ui/core/Button";
+import { useHistory } from "react-router-dom";
 
 import Axios from "axios";
 import { PlayCircleFilledWhite } from "@material-ui/icons";
@@ -35,8 +36,10 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function ProfileModal() {
+    const history = useHistory();
     const logoutHandler = () => {
         localStorage.removeItem("token");
+        localStorage.removeItem("role");
         history.push("/login");
     };
     const [user, setUser] = useState([]);

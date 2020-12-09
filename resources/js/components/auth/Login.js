@@ -61,9 +61,10 @@ function Login() {
             password: password
         };
         axios.post("/api/auth/login", user).then(res => {
-            console.log(res.data.access_token);
+            console.log(res.data);
             dispatch(login());
             localStorage.setItem("token", res.data.access_token);
+            localStorage.setItem("role", res.data.role);
             history.push("/");
         });
     };
