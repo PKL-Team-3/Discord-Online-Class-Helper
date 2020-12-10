@@ -13,6 +13,7 @@ use App\Http\Controllers\TestController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::view('/{path?}', 'index');
+Route::view('/{path?}', 'index')
+->where('path', '.*', 'index');
 
 Route::get('/login', [TestController::class, 'get'])->name('test');
