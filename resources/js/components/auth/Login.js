@@ -10,7 +10,6 @@ import Box from "@material-ui/core/Box";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Ling from "@material-ui/core/Link";
-import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../actions/index";
 import { Link, useHistory, Redirect } from "react-router-dom";
 
@@ -42,7 +41,6 @@ const useStyles = makeStyles({
 
 function Login() {
     const classes = useStyles();
-    const dispatch = useDispatch();
     const history = useHistory();
     const [checked, setChecked] = useState(true);
     const handleChange = event => {
