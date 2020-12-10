@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PengumumanController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,8 @@ Route::get('/demo-url',  function  (Request $request)  {
     Route::post('pengumuman/create',[PengumumanController::class, 'create']);
     Route::get('pengumuman/get', [PengumumanController::class, 'get']);
     Route::get('pengumuman/getUsername', [PengumumanController::class, 'getUsername']);
+    Route::post('post/create', [PostController::class, 'create']);
+    Route::get('post/get', [PostController::class, 'get']);
   });
 
 

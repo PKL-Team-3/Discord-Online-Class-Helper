@@ -60,7 +60,6 @@ function Login() {
         };
         axios.post("/api/auth/login", user).then(res => {
             console.log(res.data);
-            dispatch(login());
             localStorage.setItem("token", res.data.access_token);
             localStorage.setItem("role", res.data.role);
             localStorage.setItem("user_id", res.data.id);
