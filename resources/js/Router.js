@@ -19,6 +19,7 @@ import Quiz from "./components/views/Quiz";
 import PengumumanCreate from "./components/views/PengumumanCreate";
 import Test from "./components/Test";
 import PostView from "./components/views/PostView";
+import CreateMateri from "./components/views/CreateMateri";
 
 //Store
 
@@ -45,6 +46,7 @@ const Main = props => (
             path="/pengumuman/create"
             component={PengumumanCreate}
         />
+        <GuruRoute exact path="/materi/create" component={CreateMateri} />
         <GuestRoute exact path="/login" component={Login} />
         <GuestRoute exact path="/register" component={Register} />
     </Switch>
