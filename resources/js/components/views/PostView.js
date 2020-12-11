@@ -1,5 +1,6 @@
 import { set } from "lodash";
 import React, { useEffect, useState } from "react";
+import Navbar from "../layouts/Navbar";
 
 export default function PostView() {
     const token = localStorage.getItem("token");
@@ -30,13 +31,16 @@ export default function PostView() {
         return () => {};
     }, []);
     return (
-        <div className="container mt-5">
-            <img src={data.thumbnail} style={{ width: 500 }} alt="" />
-            <h2 className="mt-3 text-white mb-5">Title: {data.title}</h2>
-            <div
-                className="text-white"
-                dangerouslySetInnerHTML={createMarkup()}
-            ></div>
-        </div>
+        <React.Fragment>
+            <Navbar />
+            <div className="container mt-5">
+                <img src={data.thumbnail} style={{ width: 500 }} alt="" />
+                <h2 className="mt-3 text-white mb-5">Title: {data.title}</h2>
+                <div
+                    className="text-white"
+                    dangerouslySetInnerHTML={createMarkup()}
+                ></div>
+            </div>
+        </React.Fragment>
     );
 }
