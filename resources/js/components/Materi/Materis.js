@@ -8,7 +8,8 @@ import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles(theme => ({
     root: {
         display: "flex",
-        maxWidth: 325
+        maxWidth: 325,
+        backgroundColor: "#212121"
     },
     details: {
         display: "flex",
@@ -32,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function MediaControlCard() {
+export default function Materis() {
     const classes = useStyles();
     const theme = useTheme();
 

@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../layouts/Navbar";
+import Materis from "../Materi/Materis";
 
 export default function Materi() {
     const role = localStorage.getItem("role");
@@ -12,8 +13,8 @@ export default function Materi() {
                     Unauthorized
                 </h1>
             ) : (
-                <div>
-                    <h2>Materi</h2>
+                <div className="container mt-5">
+                    <Materis />
                 </div>
             )}
         </React.Fragment>
