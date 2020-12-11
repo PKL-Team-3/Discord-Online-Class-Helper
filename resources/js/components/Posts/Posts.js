@@ -68,8 +68,20 @@ export default function Posts() {
         return () => {};
     }, []);
 
+    const clickHandler = () => {
+        history.push("/post/create");
+    };
+
     return (
         <React.Fragment>
+            <Button
+                onClick={clickHandler}
+                className="mt-5"
+                variant="contained"
+                color="primary"
+            >
+                Create Post
+            </Button>
             <div className="row">
                 {datas.map(data => {
                     const {

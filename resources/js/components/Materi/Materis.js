@@ -5,6 +5,8 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import { Autorenew } from "@material-ui/icons";
+import Button from "@material-ui/core/Button";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -82,15 +84,33 @@ export default function Materis() {
         console.log(result);
     };
 
+    const history = useHistory();
+
+    const role = localStorage.getItem("role");
+
     useEffect(() => {
         getMateris();
         return () => {};
     }, []);
 
-    const clickHandler = () => {};
+    const clickHandler = () => {
+        history.push("/materi/create");
+    };
 
     return (
         <React.Fragment>
+            {role === "guru" ? (
+                <Button
+                    onClick={clickHandler}
+                    className=""
+                    variant="contained"
+                    color="primary"
+                >
+                    Create Materi
+                </Button>
+            ) : (
+                ""
+            )}
             <div className="row">
                 {datas.map(data => {
                     const {
@@ -106,7 +126,7 @@ export default function Materis() {
                             key={id}
                             onClick={() => {
                                 {
-                                    window.location.assign(attachment);
+                                    window.open(attachment);
                                 }
                             }}
                             className="col-4"
