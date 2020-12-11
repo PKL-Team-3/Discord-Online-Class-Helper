@@ -12,7 +12,8 @@ const useStyles = makeStyles(theme => ({
         alignItems: "center",
         justifyContent: "center",
         width: 325,
-        backgroundColor: "#212121"
+        backgroundColor: "#212121",
+        marginTop: 50
     },
     details: {
         display: "flex",
@@ -133,19 +134,33 @@ export default function Materis() {
                                             <CardMedia
                                                 className={classes.cover}
                                                 image="https://cdn.discordapp.com/attachments/772376128383483914/786844968466644992/youtube.png"
-                                                title="Live from space album cover"
+                                                title={type}
                                             />
                                         );
-                                    } else if (type === "asdasd") {
+                                    } else if (type === "drive") {
                                         return (
                                             <CardMedia
                                                 className={classes.cover}
                                                 image="https://cdn.discordapp.com/attachments/772376128383483914/786777624063770644/Logo_of_Google_Drive.png"
-                                                title="Live from space album cover"
+                                                title={type}
                                             />
                                         );
-                                    } else {
-                                        return <div>catch all</div>;
+                                    } else if (type === "doc") {
+                                        return (
+                                            <CardMedia
+                                                className={classes.cover}
+                                                image="https://cdn.discordapp.com/attachments/772376128383483914/786852187140521984/icons8-google-docs-480.png"
+                                                title={type}
+                                            />
+                                        );
+                                    } else if (type === "other") {
+                                        return (
+                                            <CardMedia
+                                                className={classes.cover}
+                                                image="https://cdn.discordapp.com/attachments/772376128383483914/786854726675202079/link.png"
+                                                title={type}
+                                            />
+                                        );
                                     }
                                 })()}
                             </Card>
