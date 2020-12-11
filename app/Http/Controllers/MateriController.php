@@ -30,4 +30,23 @@ class MateriController extends Controller
             // 'username' => $user->username,
         ], 201);
     }
+
+    public function get(Request $request, Materi $materi, User $user){
+        $datas = $materi->all();
+        $user = [];
+        foreach ($datas as $data) {
+            $userr[] = $data->user->username;
+        }
+        // $username = Pengumuman::with('user')->get()->transform(fn($e) => $e->user->username);
+        // $pengu = Pengumuman::find(1);
+        // $userr = $pengu->user->username;
+
+        // return var_dump($userr);
+
+        // $daata = response()->json($data);
+        return response()->json([
+            'data' => $datas,
+            'user' => $userr
+        ], 200);
+    }
 }
