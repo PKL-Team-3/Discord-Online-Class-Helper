@@ -1,103 +1,58 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-
-function TabPanel(props) {
-    const { children, value, index, ...other } = props;
-
-    return (
-        <div
-            role="tabpanel"
-            hidden={value !== index}
-            id={`nav-tabpanel-${index}`}
-            aria-labelledby={`nav-tab-${index}`}
-            {...other}
-        >
-            {value === index && (
-                <Box p={3}>
-                    <Typography>{children}</Typography>
-                </Box>
-            )}
-        </div>
-    );
-}
-
-TabPanel.propTypes = {
-    children: PropTypes.node,
-    index: PropTypes.any.isRequired,
-    value: PropTypes.any.isRequired
-};
-
-function a11yProps(index) {
-    return {
-        id: `nav-tab-${index}`,
-        "aria-controls": `nav-tabpanel-${index}`
-    };
-}
-
-function LinkTab(props) {
-    return (
-        <Tab
-            component="a"
-            onClick={event => {
-                event.preventDefault();
-            }}
-            {...props}
-        />
-    );
-}
 
 const useStyles = makeStyles(theme => ({
     root: {
-        flexGrow: 1,
-        backgroundColor: theme.palette.background.paper
+        display: "flex",
+        maxWidth: 325
+    },
+    details: {
+        display: "flex",
+        flexDirection: "column"
+    },
+    content: {
+        flex: "1 0 auto"
+    },
+    cover: {
+        width: 100
+    },
+    controls: {
+        display: "flex",
+        alignItems: "center",
+        paddingLeft: theme.spacing(1),
+        paddingBottom: theme.spacing(1)
+    },
+    playIcon: {
+        height: 38,
+        width: 38
     }
 }));
 
-export default function NavTabs() {
+export default function MediaControlCard() {
     const classes = useStyles();
-    const [value, setValue] = React.useState(0);
-
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
+    const theme = useTheme();
 
     return (
-        <div className={classes.root}>
-            <AppBar position="static">
-                <Tabs
-                    variant="fullWidth"
-                    value={value}
-                    onChange={handleChange}
-                    aria-label="nav tabs example"
-                >
-                    <LinkTab
-                        label="Page One"
-                        href="/drafts"
-                        {...a11yProps(0)}
-                    />
-                    <LinkTab label="Page Two" href="/trash" {...a11yProps(1)} />
-                    <LinkTab
-                        label="Page Three"
-                        href="/spam"
-                        {...a11yProps(2)}
-                    />
-                </Tabs>
-            </AppBar>
-            <TabPanel value={value} index={0}>
-                Page One
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-                Page Two
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-                Page Three
-            </TabPanel>
-        </div>
+        <Card className={classes.root}>
+            <div className={classes.details}>
+                <CardContent className={classes.content}>
+                    <Typography component="h5" variant="h5">
+                        Live From Space
+                    </Typography>
+                    <Typography variant="subtitle1" color="textSecondary">
+                        Mac Miller
+                    </Typography>
+                </CardContent>
+            </div>
+            <CardMedia
+                className={classes.cover}
+                image="https://cdn.discordapp.com/attachments/772376128383483914/786777624063770644/Logo_of_Google_Drive.png"
+                title="Live from space album cover"
+            />
+        </Card>
     );
 }

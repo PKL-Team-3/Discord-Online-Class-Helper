@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\MateriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,8 @@ Route::get('/demo-url',  function  (Request $request)  {
     Route::post('post/create', [PostController::class, 'create']);
     Route::get('post/get', [PostController::class, 'get']);
     Route::get('post/get/{id}', [PostController::class, 'getSinglePost']);
+    Route::post('materi/create', [MateriController::class, 'create']);
+    Route::get('materi/get', [MateriController::class, 'get']);
   });
 
 
