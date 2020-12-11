@@ -28,6 +28,7 @@ Route::get('/demo-url',  function  (Request $request)  {
     Route::get('pengumuman/getUsername', [PengumumanController::class, 'getUsername']);
     Route::post('post/create', [PostController::class, 'create']);
     Route::get('post/get', [PostController::class, 'get']);
+    Route::get('post/get/{id}', [PostController::class, 'getSinglePost']);
   });
 
 
