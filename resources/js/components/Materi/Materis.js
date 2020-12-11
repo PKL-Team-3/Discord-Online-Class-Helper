@@ -127,11 +127,27 @@ export default function Materis() {
                                         </Typography>
                                     </CardContent>
                                 </div>
-                                <CardMedia
-                                    className={classes.cover}
-                                    image="https://cdn.discordapp.com/attachments/772376128383483914/786777624063770644/Logo_of_Google_Drive.png"
-                                    title="Live from space album cover"
-                                />
+                                {(() => {
+                                    if (type === "youtube") {
+                                        return (
+                                            <CardMedia
+                                                className={classes.cover}
+                                                image="https://cdn.discordapp.com/attachments/772376128383483914/786844968466644992/youtube.png"
+                                                title="Live from space album cover"
+                                            />
+                                        );
+                                    } else if (type === "asdasd") {
+                                        return (
+                                            <CardMedia
+                                                className={classes.cover}
+                                                image="https://cdn.discordapp.com/attachments/772376128383483914/786777624063770644/Logo_of_Google_Drive.png"
+                                                title="Live from space album cover"
+                                            />
+                                        );
+                                    } else {
+                                        return <div>catch all</div>;
+                                    }
+                                })()}
                             </Card>
                         </div>
                     );
