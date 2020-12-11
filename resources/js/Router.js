@@ -18,6 +18,7 @@ import PostCreate from "./components/views/PostCreate";
 import Quiz from "./components/views/Quiz";
 import PengumumanCreate from "./components/views/PengumumanCreate";
 import Test from "./components/Test";
+import PostView from "./components/views/PostView";
 
 //Store
 
@@ -29,7 +30,7 @@ import Test from "./components/Test";
 
 const Main = props => (
     <Switch>
-        <ProtectedRoute exact path="/test" component={Test} />
+        <ProtectedRoute exact path="/post/view/:id" component={PostView} />
         <ProtectedRoute exact path="/test" component={Testbar} />
         <ProtectedRoute exact path="/" component={Home} />
         <ProtectedRoute exact path="/absensi" component={Absensi} />

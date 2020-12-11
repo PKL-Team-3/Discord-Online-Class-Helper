@@ -11,10 +11,12 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
+import { useHistory } from "react-router-dom";
 
 export default function PostCreate() {
     const [value, setValue] = useState("");
 
+    const history = useHistory();
     const [title, setTitle] = useState("");
     const [category, setCategory] = useState("");
     const [thumbnail, setThumbnail] = useState("");
@@ -68,9 +70,9 @@ export default function PostCreate() {
                         value={category}
                         onChange={handleChange}
                     >
-                        <MenuItem value={10}>Academic</MenuItem>
-                        <MenuItem value={20}>Non Academic</MenuItem>
-                        <MenuItem value={30}>Etc</MenuItem>
+                        <MenuItem value="Academic">Academic</MenuItem>
+                        <MenuItem value="Non Academic">Non Academic</MenuItem>
+                        <MenuItem value="Etc">Etc</MenuItem>
                     </Select>
                 </FormControl>
             </div>

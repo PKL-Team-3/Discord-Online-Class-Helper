@@ -47,6 +47,15 @@ class PostController extends Controller
 
         
     }
+    
+    public function getSinglePost(Post $post, Request $request, User $user,$id){
+
+        $onePosts= $post->where('id', $id)->get();
+        
+        return response()->json([
+            'data' => $onePosts
+        ]);
+    }
 
 
 }
