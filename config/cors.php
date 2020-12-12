@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => ['http://127.0.0.1:8000','http://discord.com/api/webhooks/771362482395807764/go3Fa7dAnaPlz-S9cqUZFf2H1JCIN_CBlNgyD_8GgpLbKVjB_p88FkACh64XnVgChWrI'],
 
     'allowed_origins_patterns' => [],
 
@@ -29,6 +29,6 @@ return [
 
     'max_age' => 0,
 
-    'supports_credentials' => false,
+    'supports_credentials' => true,
 
 ];

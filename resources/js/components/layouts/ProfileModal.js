@@ -32,6 +32,14 @@ const useStyles = makeStyles(theme => ({
     },
     white: {
         color: "#111111"
+    },
+    avatar: {
+        maxWidth: 25,
+        borderRadius: 25
+    },
+    modala: {
+        maxWidth: 100,
+        borderRadius: "50%"
     }
 }));
 
@@ -40,9 +48,12 @@ export default function ProfileModal() {
     const logoutHandler = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("role");
+        localStorage.removeItem("avatar");
         history.push("/login");
     };
     const [user, setUser] = useState([]);
+
+    const avatar = localStorage.getItem("avatar");
 
     const token = localStorage.getItem("token");
 
@@ -79,16 +90,27 @@ export default function ProfileModal() {
     const body = (
         <div style={modalStyle} className={classes.bg} color="secondary">
             <h2>Profile</h2>
-            <h4 id="simple-modal-title">username: {user.username}</h4>
-            {user.role === "guest" ? (
-                <p id="simple-modal-description">
-                    Please sync your account by typing !sync {user.id} in the
-                    #school-bot channel{" "}
-                </p>
-            ) : (
-                <p>Role: {user.role}</p>
-            )}
-            <Button variant="outlined" onClick={logoutHandler} color="danger">
+            <div className="d-flex">
+                <img src={avatar} className={classes.modala} alt="" />
+                <div className="float-right ml-3">
+                    <h4 id="simple-modal-title">username: {user.username}</h4>
+                    {user.role === "guest" ? (
+                        <p id="simple-modal-description">
+                            Please sync your account by typing !sync {user.id}{" "}
+                            in the #school-bot channel{" "}
+                        </p>
+                    ) : (
+                        <p>Role: {user.role}</p>
+                    )}
+                </div>
+            </div>
+
+            <Button
+                className="mt-3"
+                variant="outlined"
+                onClick={logoutHandler}
+                color="danger"
+            >
                 Logout
             </Button>
         </div>
@@ -96,15 +118,28 @@ export default function ProfileModal() {
 
     return (
         <div>
-            <IconButton
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                color="inherit"
-                onClick={handleOpen}
-            >
-                <AccountCircle />
-            </IconButton>
+            {avatar ? (
+                <IconButton
+                    aria-label="account of current user"
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    color="inherit"
+                    onClick={handleOpen}
+                >
+                    <img className={classes.avatar} src={avatar} alt="" />{" "}
+                </IconButton>
+            ) : (
+                <IconButton
+                    aria-label="account of current user"
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    color="inherit"
+                    onClick={handleOpen}
+                >
+                    <AccountCircle />
+                </IconButton>
+            )}
+
             <Modal
                 open={open}
                 onClose={handleClose}

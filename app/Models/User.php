@@ -25,7 +25,6 @@ class User extends Authenticatable
         'username',
         'password',
         'role',
-        'sync_id',
     ];
 
     /**
@@ -59,6 +58,10 @@ class User extends Authenticatable
 
     public function materis(){
         return $this->hasMany(Materi::class);
+    }
+
+    public function discord(){
+        return $this->hasOne(Discord::class);
     }
 
 }

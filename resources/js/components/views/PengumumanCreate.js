@@ -53,7 +53,10 @@ function Login() {
 
     const gett = axios.create({
         baseURL: "http://127.0.0.1:8000/",
-        headers: { Authorization: "Bearer " + token }
+        headers: {
+            Authorization: "Bearer " + token,
+            "Access-Control-Allow-Origin": true
+        }
     });
 
     const user_id = localStorage.getItem("user_id");
@@ -64,11 +67,41 @@ function Login() {
         e.preventDefault();
         console.log(title, content);
 
+        const username = localStorage.getItem("username");
+
+        const datae = {
+            username: "Notification Cat",
+            avatar_url:
+                "https://cdn.discordapp.com/attachments/786227293295083581/787008780155617360/unknown.png",
+            content: "Pengumuman Baru",
+            embeds: [
+                {
+                    author: {
+                        name: username,
+                        icon_url:
+                            "https://cdn.discordapp.com/attachments/786227293295083581/786862271779307520/90264738_509649109732988_9037524068902895616_n.png"
+                    },
+                    title: title,
+                    url: "http://127.0.0.1:8000/pengumuman",
+                    description: content,
+                    color: 9620421
+                }
+            ]
+        };
+        console.log(datae);
         const pengumuman = {
             user_id,
             title,
             content
         };
+        gett.post(
+            "https://discord.com/api/webhooks/787252980608008192/Tj31k7nQg5NzrBRX7cpVzuREM23LLrZq1dQK6kfz0cZnN1w8oaUHUD4lDyHIyzHaGkk8",
+            datae
+        )
+            .then(res => {
+                console.log(res.data);
+            })
+            .catch(err => console.log(err.response));
         gett.post("/api/pengumuman/create", pengumuman)
             .then(res => {
                 console.log(res.data);
