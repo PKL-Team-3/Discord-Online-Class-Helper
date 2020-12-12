@@ -25,7 +25,6 @@ class User extends Authenticatable
         'username',
         'password',
         'role',
-        'sync_id',
     ];
 
     /**

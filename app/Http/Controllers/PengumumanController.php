@@ -5,9 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pengumuman;
 use App\Models\User;
+use App\Models\Discord;
 
 class PengumumanController extends Controller
 {
+    public function test(Request $request, Pengumuman $pengumuman, User $user, Discord $discord){
+        $result = $discord->user()->pengumumans();
+
+        var_dump($result);
+    }
+
     public function create(Request $request, Pengumuman $pengumuman, User $user){
         $result = $request->validate([
             'user_id' => 'required',
@@ -17,7 +24,6 @@ class PengumumanController extends Controller
 
         Auth()->user()->pengumumans()->create($result);
 
-        // return var_dump($test);
         
         return response()->json([
             'success' => true,
