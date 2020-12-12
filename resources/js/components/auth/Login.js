@@ -59,12 +59,27 @@ function Login() {
             password: password
         };
         axios.post("/api/auth/login", user).then(res => {
-            console.log(res.data);
+            console.log(res);
             localStorage.setItem("token", res.data.access_token);
             localStorage.setItem("role", res.data.role);
             localStorage.setItem("user_id", res.data.id);
             localStorage.setItem("username", res.data.username);
+            // localStorage.setItem("avatar", res.data.discord.avatar_url);
             history.push("/");
+            const gett = axios.create({
+                baseURL: "http://127.0.0.1:8000/",
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("token")
+                }
+            });
+            gett.get("/api/syncedlogin", user)
+                .then(res => {
+                    console.log(res);
+                    localStorage.setItem("avatar", res.data.data.avatar_url);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
         });
     };
 

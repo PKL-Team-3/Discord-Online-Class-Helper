@@ -60,4 +60,8 @@ class User extends Authenticatable
         return $this->hasMany(Materi::class);
     }
 
+    public function discord(){
+        return $this->hasOne(Discord::class);
+    }
+
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\MateriController;
+use App\Http\Controllers\DiscordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,8 +34,14 @@ Route::get('/demo-url',  function  (Request $request)  {
     Route::post('materi/create', [MateriController::class, 'create']);
     Route::get('materi/get', [MateriController::class, 'get']);
     Route::get('pengumuman/test', [PengumumanController::class, 'test']);
+    Route::get('syncedlogin', [AuthController::class, 'syncedLogin']);
+
   });
 
+  Route::get('pengumuman/uget', [PengumumanController::class, 'uGet']);
+  Route::get('pengumuman/uget/{id}', [PengumumanController::class, 'uGetOne']);
+
+  Route::post('auth/sync/create', [DiscordController::class, 'create']);
 
 Route::group([
     'prefix' => 'auth'

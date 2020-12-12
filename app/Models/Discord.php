@@ -9,7 +9,13 @@ class Discord extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'username',
+        'avatar_url',
+    ];
+
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->hasOne(User::class);
     }
 }

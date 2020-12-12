@@ -83,6 +83,9 @@ class AuthController extends Controller
         if ($request->remember_me)
             $token->expires_at = Carbon::now()->addWeeks(1);
         $token->save();
+
+        // $discord = Auth()->user()->discord()->firstOrFail();
+
         return response()->json([
             'success' => true,
             'id' => $user->id,
@@ -90,9 +93,17 @@ class AuthController extends Controller
             'username' => $user->username,
             'access_token' => $tokenResult->accessToken,
             'token_type' => 'Bearer',
+            // 'discord' => $discord,
             'expires_at' => Carbon::parse(
                 $tokenResult->token->expires_at
             )->toDateTimeString()
+        ], 201);
+    }
+
+    public function syncedLogin(Request $request){
+        $discord = Auth()->user()->discord()->firstOrFail();
+        return response()->json([
+            'data' => $discord,
         ], 201);
     }
 
