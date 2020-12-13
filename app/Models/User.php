@@ -64,4 +64,8 @@ class User extends Authenticatable
         return $this->hasOne(Discord::class);
     }
 
+    public function jadwals(){
+        return $this->hasMany(Discord::class);
+    }
+
 }
