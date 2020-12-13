@@ -15,6 +15,10 @@ class CreateJadwalsTable extends Migration
     {
         Schema::create('jadwals', function (Blueprint $table) {
             $table->id();
+            $table->foreignUuid('user_id')->constrained();
+            $table->string('title');
+            $table->date('tanggal');
+            $table->time('jam');
             $table->timestamps();
         });
     }

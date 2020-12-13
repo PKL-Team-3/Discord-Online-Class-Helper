@@ -1,58 +1,82 @@
+import "date-fns";
 import React from "react";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
+import DateFnsUtils from "@date-io/date-fns";
+import { TimePicker } from "@material-ui/pickers";
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        display: "flex",
-        maxWidth: 325
-    },
-    details: {
-        display: "flex",
-        flexDirection: "column"
-    },
-    content: {
-        flex: "1 0 auto"
-    },
-    cover: {
-        width: 100
-    },
-    controls: {
-        display: "flex",
-        alignItems: "center",
-        paddingLeft: theme.spacing(1),
-        paddingBottom: theme.spacing(1)
-    },
-    playIcon: {
-        height: 38,
-        width: 38
-    }
-}));
+import {
+    MuiPickersUtilsProvider,
+    KeyboardTimePicker,
+    KeyboardDatePicker
+} from "@material-ui/pickers";
 
-export default function MediaControlCard() {
-    const classes = useStyles();
-    const theme = useTheme();
+export default function MaterialUIPickers() {
+    // The first commit of Material-UI
+    const [selectedDate, setSelectedDate] = React.useState(new Date());
+
+    const [selectedTime, setSelectedTime] = React.useState(new Date());
+
+    const handleDateChange = date => {
+        var dd = date.getDate();
+        var mm = date.getMonth() + 1;
+        var yyyy = date.getFullYear();
+
+        if (dd < 10) {
+            dd = "0" + dd;
+        }
+
+        if (mm < 10) {
+            mm = "0" + mm;
+        }
+        const tanggal = yyyy + "-" + mm + "-" + dd;
+        console.log(tanggal);
+
+        setSelectedDate(date);
+        setSelectedTime(date.toLocaleTimeString("it-IT"));
+
+        console.log(selectedTime);
+        console.log(selectedDate);
+    };
 
     return (
-        <Card className={classes.root}>
-            <div className={classes.details}>
-                <CardContent className={classes.content}>
-                    <Typography component="h5" variant="h5">
-                        Live From Space
-                    </Typography>
-                    <Typography variant="subtitle1" color="textSecondary">
-                        Mac Miller
-                    </Typography>
-                </CardContent>
-            </div>
-            <CardMedia
-                className={classes.cover}
-                image="https://cdn.discordapp.com/attachments/772376128383483914/786777624063770644/Logo_of_Google_Drive.png"
-                title="Live from space album cover"
-            />
-        </Card>
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <Grid container justify="space-around">
+                <KeyboardDatePicker
+                    disableToolbar
+                    variant="inline"
+                    format="MM/dd/dd"
+                    margin="normal"
+                    id="date-picker-inline"
+                    label="Date picker inline"
+                    value={selectedDate}
+                    onChange={handleDateChange}
+                    KeyboardButtonProps={{
+                        "aria-label": "change date"
+                    }}
+                />
+                <KeyboardDatePicker
+                    margin="normal"
+                    id="date-picker-dialog"
+                    label="Date picker dialog"
+                    format="MM/dd/yyyy"
+                    value={selectedDate}
+                    onChange={handleDateChange}
+                    KeyboardButtonProps={{
+                        "aria-label": "change date"
+                    }}
+                />
+                <KeyboardTimePicker
+                    margin="normal"
+                    id="time-picker"
+                    label="Time picker"
+                    ampm={false}
+                    value={selectedDate}
+                    onChange={handleDateChange}
+                    KeyboardButtonProps={{
+                        "aria-label": "change time"
+                    }}
+                />
+            </Grid>
+        </MuiPickersUtilsProvider>
     );
 }
