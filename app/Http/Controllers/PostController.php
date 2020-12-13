@@ -17,8 +17,6 @@ class PostController extends Controller
         ]);
 
         Auth()->user()->posts()->create($result);
-
-        return var_dump($result);
         
         return response()->json([
             'success' => true,

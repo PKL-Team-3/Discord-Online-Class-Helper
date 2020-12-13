@@ -6,7 +6,7 @@ class ProtectedRoute extends React.Component {
         const Component = this.props.component;
         const isGuru = localStorage.getItem("role");
 
-        return isGuru === "guru" ? <Component /> : <Redirect to="/" />;
+        return isGuru === "Guru" ? <Component /> : <Redirect to="/" />;
     }
 }
 

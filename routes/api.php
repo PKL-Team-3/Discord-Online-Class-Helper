@@ -7,6 +7,7 @@ use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\MateriController;
 use App\Http\Controllers\DiscordController;
+use App\Http\Controllers\JadwalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,7 @@ Route::get('/demo-url',  function  (Request $request)  {
     Route::get('materi/get', [MateriController::class, 'get']);
     Route::get('pengumuman/test', [PengumumanController::class, 'test']);
     Route::get('syncedlogin', [AuthController::class, 'syncedLogin']);
+    Route::post('jadwal/create', [JadwalController::class, 'create']);
 
   });
 
@@ -49,7 +51,7 @@ Route::group([
     Route::post('login', [AuthController::class, 'login']);
     Route::post('signup', [AuthController::class, 'register']);
     Route::put('sync/{user}', [AuthController::class, 'sync']);
-  
+    
     Route::group([
       'middleware' => 'auth:api'
     ], function() {
