@@ -24,7 +24,7 @@ import {
     KeyboardDatePicker
 } from "@material-ui/pickers";
 
-export default function PostCreate() {
+export default function JadwalCreate() {
     const [value, setValue] = useState("");
     const useStyles = makeStyles({
         bullet: {

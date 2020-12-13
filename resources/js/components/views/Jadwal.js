@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../layouts/Navbar";
+import Jadwals from "../jadwal/Jadwals";
 
 export default function Jadwal() {
     const role = localStorage.getItem("role");
@@ -12,8 +13,8 @@ export default function Jadwal() {
                     Unauthorized
                 </h1>
             ) : (
-                <div>
-                    <h2>Jadwal</h2>
+                <div className="container mt-5">
+                    <Jadwals />
                 </div>
             )}
         </React.Fragment>
