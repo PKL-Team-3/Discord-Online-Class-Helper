@@ -29,7 +29,8 @@ const useStyles = makeStyles(theme => ({
         marginLeft: "auto",
         minWidth: 100,
         height: 100,
-        marginRight: 10
+        marginRight: 10,
+        borderRadius: "50%"
     },
     controls: {
         display: "flex",
