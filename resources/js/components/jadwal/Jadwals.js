@@ -137,7 +137,7 @@ export default function Jadwals() {
                         jam
                     } = data;
                     {
-                        if (dayjs(tanggal).day() === 0) {
+                        if (dayjs(tanggal).day() === 1) {
                             if (currentWeek === dayjs(tanggal).week()) {
                                 return (
                                     <div
@@ -206,7 +206,7 @@ export default function Jadwals() {
                         jam
                     } = data;
                     {
-                        if (dayjs(tanggal).day() === 1) {
+                        if (dayjs(tanggal).day() === 2) {
                             if (currentWeek === dayjs(tanggal).week()) {
                                 return (
                                     <div
@@ -275,7 +275,7 @@ export default function Jadwals() {
                         jam
                     } = data;
                     {
-                        if (dayjs(tanggal).day() === 2) {
+                        if (dayjs(tanggal).day() === 3) {
                             if (currentWeek === dayjs(tanggal).week()) {
                                 return (
                                     <div
@@ -344,7 +344,7 @@ export default function Jadwals() {
                         jam
                     } = data;
                     {
-                        if (dayjs(tanggal).day() === 3) {
+                        if (dayjs(tanggal).day() === 4) {
                             if (currentWeek === dayjs(tanggal).week()) {
                                 return (
                                     <div
@@ -413,7 +413,7 @@ export default function Jadwals() {
                         jam
                     } = data;
                     {
-                        if (dayjs(tanggal).day() === 4) {
+                        if (dayjs(tanggal).day() === 5) {
                             if (currentWeek === dayjs(tanggal).week()) {
                                 return (
                                     <div
