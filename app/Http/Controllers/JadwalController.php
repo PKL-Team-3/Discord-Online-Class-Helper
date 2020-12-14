@@ -46,6 +46,10 @@ class JadwalController extends Controller
         foreach ($datas as $data) {
             $userr[] = $data->user->username;
         }
+        $avatar = [];
+        foreach ($datas as $data) {
+            $avatar[] = $data->user->discord->avatar_url;
+        }
         // $username = Pengumuman::with('user')->get()->transform(fn($e) => $e->user->username);
         // $pengu = Pengumuman::find(1);
         // $userr = $pengu->user->username;
@@ -55,7 +59,8 @@ class JadwalController extends Controller
         // $daata = response()->json($data);
         return response()->json([
             'data' => $jadwal->all(),
-            'user' => $userr
+            'user' => $userr,
+            'avatar' => $avatar
         ], 200);
     }
 
