@@ -99,7 +99,7 @@ export default function Materis() {
 
     return (
         <React.Fragment>
-            {role === "guru" ? (
+            {role === "Guru" ? (
                 <Button
                     onClick={clickHandler}
                     className=""
