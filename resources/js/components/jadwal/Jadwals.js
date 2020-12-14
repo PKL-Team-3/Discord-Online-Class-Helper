@@ -29,7 +29,8 @@ const useStyles = makeStyles(theme => ({
         marginLeft: "auto",
         minWidth: 100,
         height: 100,
-        marginRight: 10
+        marginRight: 10,
+        borderRadius: "50%"
     },
     controls: {
         display: "flex",
@@ -73,6 +74,7 @@ export default function Jadwals() {
         console.log(result);
         const a = materis.data.data;
         const b = materis.data.user;
+        const c = materis.data.avatar;
 
         const result = a.map(function(el, x = 0) {
             var o = Object.assign({}, el);
@@ -81,13 +83,20 @@ export default function Jadwals() {
             console.log(x);
             return o;
         });
-        setDatas(result);
+        const result2 = result.map(function(el, x = 0) {
+            var o = Object.assign({}, el);
+            o.avatar_url = c[x];
+            x++;
+            console.log(x);
+            return o;
+        });
+        setDatas(result2);
         console.log(currentWeek);
         // const c = [...a, ...b];
         // console.log(a);
         // console.log(b);
         // console.log(c);
-        console.log(result);
+        console.log(result2);
     };
 
     const currentWeek = dayjs(Date.now()).week();
@@ -134,10 +143,11 @@ export default function Jadwals() {
                         username,
                         id,
                         tanggal,
-                        jam
+                        jam,
+                        avatar_url
                     } = data;
                     {
-                        if (dayjs(tanggal).day() === 0) {
+                        if (dayjs(tanggal).day() === 1) {
                             if (currentWeek === dayjs(tanggal).week()) {
                                 return (
                                     <div
@@ -179,7 +189,147 @@ export default function Jadwals() {
 
                                             <CardMedia
                                                 className={classes.cover}
-                                                image={avatar}
+                                                image={avatar_url}
+                                                title={type}
+                                            />
+                                        </Card>
+                                    </div>
+                                );
+                            }
+                        }
+                    }
+                })}
+            </div>{" "}
+            <Typography className="text-white mt-5" variant="h4" gutterBottom>
+                Selasa
+            </Typography>
+            <div className="row">
+                {datas.map(data => {
+                    const {
+                        title,
+                        description,
+                        type,
+                        attachment,
+                        username,
+                        id,
+                        tanggal,
+                        jam,
+                        avatar_url
+                    } = data;
+                    {
+                        if (dayjs(tanggal).day() === 2) {
+                            if (currentWeek === dayjs(tanggal).week()) {
+                                return (
+                                    <div
+                                        key={id}
+                                        onClick={() => {
+                                            {
+                                                console.log(
+                                                    dayjs(tanggal).week()
+                                                );
+                                                console.log(
+                                                    dayjs(tanggal).day()
+                                                );
+                                            }
+                                        }}
+                                        className="col-4"
+                                        role="button"
+                                    >
+                                        <Card className={classes.root}>
+                                            <div className={classes.details}>
+                                                <CardContent
+                                                    className={classes.content}
+                                                >
+                                                    <Typography
+                                                        component="h5"
+                                                        variant="h5"
+                                                    >
+                                                        {title}
+                                                    </Typography>
+                                                    <Typography
+                                                        variant="subtitle1"
+                                                        color="textSecondary"
+                                                    >
+                                                        {username}
+                                                        <br />
+                                                        {jam}
+                                                    </Typography>
+                                                </CardContent>
+                                            </div>
+
+                                            <CardMedia
+                                                className={classes.cover}
+                                                image={avatar_url}
+                                                title={type}
+                                            />
+                                        </Card>
+                                    </div>
+                                );
+                            }
+                        }
+                    }
+                })}
+            </div>{" "}
+            <Typography className="text-white mt-5" variant="h4" gutterBottom>
+                Rabu
+            </Typography>
+            <div className="row">
+                {datas.map(data => {
+                    const {
+                        title,
+                        description,
+                        type,
+                        attachment,
+                        username,
+                        id,
+                        tanggal,
+                        jam,
+                        avatar_url
+                    } = data;
+                    {
+                        if (dayjs(tanggal).day() === 3) {
+                            if (currentWeek === dayjs(tanggal).week()) {
+                                return (
+                                    <div
+                                        key={id}
+                                        onClick={() => {
+                                            {
+                                                console.log(
+                                                    dayjs(tanggal).week()
+                                                );
+                                                console.log(
+                                                    dayjs(tanggal).day()
+                                                );
+                                            }
+                                        }}
+                                        className="col-4"
+                                        role="button"
+                                    >
+                                        <Card className={classes.root}>
+                                            <div className={classes.details}>
+                                                <CardContent
+                                                    className={classes.content}
+                                                >
+                                                    <Typography
+                                                        component="h5"
+                                                        variant="h5"
+                                                    >
+                                                        {title}
+                                                    </Typography>
+                                                    <Typography
+                                                        variant="subtitle1"
+                                                        color="textSecondary"
+                                                    >
+                                                        {username}
+                                                        <br />
+                                                        {jam}
+                                                    </Typography>
+                                                </CardContent>
+                                            </div>
+
+                                            <CardMedia
+                                                className={classes.cover}
+                                                image={avatar_url}
                                                 title={type}
                                             />
                                         </Card>
@@ -189,7 +339,147 @@ export default function Jadwals() {
                         }
                     }
                 })}{" "}
-            </div>
+            </div>{" "}
+            <Typography className="text-white mt-5" variant="h4" gutterBottom>
+                Kamis
+            </Typography>
+            <div className="row">
+                {datas.map(data => {
+                    const {
+                        title,
+                        description,
+                        type,
+                        attachment,
+                        username,
+                        id,
+                        tanggal,
+                        jam,
+                        avatar_url
+                    } = data;
+                    {
+                        if (dayjs(tanggal).day() === 4) {
+                            if (currentWeek === dayjs(tanggal).week()) {
+                                return (
+                                    <div
+                                        key={id}
+                                        onClick={() => {
+                                            {
+                                                console.log(
+                                                    dayjs(tanggal).week()
+                                                );
+                                                console.log(
+                                                    dayjs(tanggal).day()
+                                                );
+                                            }
+                                        }}
+                                        className="col-4"
+                                        role="button"
+                                    >
+                                        <Card className={classes.root}>
+                                            <div className={classes.details}>
+                                                <CardContent
+                                                    className={classes.content}
+                                                >
+                                                    <Typography
+                                                        component="h5"
+                                                        variant="h5"
+                                                    >
+                                                        {title}
+                                                    </Typography>
+                                                    <Typography
+                                                        variant="subtitle1"
+                                                        color="textSecondary"
+                                                    >
+                                                        {username}
+                                                        <br />
+                                                        {jam}
+                                                    </Typography>
+                                                </CardContent>
+                                            </div>
+
+                                            <CardMedia
+                                                className={classes.cover}
+                                                image={avatar_url}
+                                                title={type}
+                                            />
+                                        </Card>
+                                    </div>
+                                );
+                            }
+                        }
+                    }
+                })}{" "}
+            </div>{" "}
+            <Typography className="text-white mt-5" variant="h4" gutterBottom>
+                Jumat
+            </Typography>
+            <div className="row">
+                {datas.map(data => {
+                    const {
+                        title,
+                        description,
+                        type,
+                        attachment,
+                        username,
+                        id,
+                        tanggal,
+                        jam,
+                        avatar_url
+                    } = data;
+                    {
+                        if (dayjs(tanggal).day() === 5) {
+                            if (currentWeek === dayjs(tanggal).week()) {
+                                return (
+                                    <div
+                                        key={id}
+                                        onClick={() => {
+                                            {
+                                                console.log(
+                                                    dayjs(tanggal).week()
+                                                );
+                                                console.log(
+                                                    dayjs(tanggal).day()
+                                                );
+                                            }
+                                        }}
+                                        className="col-4"
+                                        role="button"
+                                    >
+                                        <Card className={classes.root}>
+                                            <div className={classes.details}>
+                                                <CardContent
+                                                    className={classes.content}
+                                                >
+                                                    <Typography
+                                                        component="h5"
+                                                        variant="h5"
+                                                    >
+                                                        {title}
+                                                    </Typography>
+                                                    <Typography
+                                                        variant="subtitle1"
+                                                        color="textSecondary"
+                                                    >
+                                                        {username}
+                                                        <br />
+                                                        {jam}
+                                                    </Typography>
+                                                </CardContent>
+                                            </div>
+
+                                            <CardMedia
+                                                className={classes.cover}
+                                                image={avatar_url}
+                                                title={type}
+                                            />
+                                        </Card>
+                                    </div>
+                                );
+                            }
+                        }
+                    }
+                })}{" "}
+            </div>{" "}
         </React.Fragment>
     );
 }
