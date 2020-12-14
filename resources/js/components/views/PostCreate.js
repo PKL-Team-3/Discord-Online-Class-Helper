@@ -81,7 +81,6 @@ export default function PostCreate() {
 
                 <CKEditor
                     editor={ClassicEditor}
-                    data="<p>Hello from CKEditor 5!</p>"
                     onReady={editor => {
                         // You can store the "editor" and use when it is needed.
                         console.log("Editor is ready to use!", editor);
@@ -103,7 +102,7 @@ export default function PostCreate() {
                     variant="contained"
                     color="primary"
                     size="medium"
-                    style={{ width: "100%" }}
+                    className="mt-5"
                     onClick={submitHandler}
                 >
                     Create

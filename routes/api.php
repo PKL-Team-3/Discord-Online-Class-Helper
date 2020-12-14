@@ -43,6 +43,8 @@ Route::get('/demo-url',  function  (Request $request)  {
   Route::get('pengumuman/uget', [PengumumanController::class, 'uGet']);
   Route::get('pengumuman/uget/{id}', [PengumumanController::class, 'uGetOne']);
   Route::get('jadwal/get', [JadwalController::class, 'get']);
+  Route::get('jadwal/getweb', [JadwalController::class, 'getWeb']);
+
   Route::post('auth/sync/create', [DiscordController::class, 'create']);
 
 Route::group([

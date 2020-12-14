@@ -13,7 +13,7 @@ class PostController extends Controller
             'title' => 'required',
             'category' => 'required',
             'content' => 'required',
-
+            'thumbnail' => 'required'
         ]);
 
         Auth()->user()->posts()->create($result);

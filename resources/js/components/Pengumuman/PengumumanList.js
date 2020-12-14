@@ -11,7 +11,7 @@ export default function PengumumanList() {
 
     return (
         <div>
-            {localStorage.getItem("role") === "guru" ? (
+            {localStorage.getItem("role") === "Guru" ? (
                 <Button
                     onClick={clickHandler}
                     className="mb-5"

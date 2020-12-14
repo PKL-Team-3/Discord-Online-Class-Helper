@@ -65,7 +65,7 @@ export default function Jadwals() {
     });
 
     const getMateris = async () => {
-        const materis = await gett.get("/api/jadwal/get");
+        const materis = await gett.get("/api/jadwal/getweb");
 
         console.log(materis);
         setMateris(materis.data.data);
@@ -113,7 +113,7 @@ export default function Jadwals() {
     }, []);
 
     const clickHandler = () => {
-        history.push("/materi/create");
+        history.push("/jadwal/create");
     };
 
     return (
@@ -125,7 +125,7 @@ export default function Jadwals() {
                     variant="contained"
                     color="primary"
                 >
-                    Create Materi
+                    Create Jadwal
                 </Button>
             ) : (
                 ""
@@ -163,7 +163,6 @@ export default function Jadwals() {
                                             }
                                         }}
                                         className="col-4"
-                                        role="button"
                                     >
                                         <Card className={classes.root}>
                                             <div className={classes.details}>
@@ -233,7 +232,6 @@ export default function Jadwals() {
                                             }
                                         }}
                                         className="col-4"
-                                        role="button"
                                     >
                                         <Card className={classes.root}>
                                             <div className={classes.details}>
@@ -303,7 +301,6 @@ export default function Jadwals() {
                                             }
                                         }}
                                         className="col-4"
-                                        role="button"
                                     >
                                         <Card className={classes.root}>
                                             <div className={classes.details}>
@@ -373,7 +370,6 @@ export default function Jadwals() {
                                             }
                                         }}
                                         className="col-4"
-                                        role="button"
                                     >
                                         <Card className={classes.root}>
                                             <div className={classes.details}>
@@ -443,7 +439,6 @@ export default function Jadwals() {
                                             }
                                         }}
                                         className="col-4"
-                                        role="button"
                                     >
                                         <Card className={classes.root}>
                                             <div className={classes.details}>
