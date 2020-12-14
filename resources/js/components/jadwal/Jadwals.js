@@ -73,6 +73,7 @@ export default function Jadwals() {
         console.log(result);
         const a = materis.data.data;
         const b = materis.data.user;
+        const c = materis.data.avatar;
 
         const result = a.map(function(el, x = 0) {
             var o = Object.assign({}, el);
@@ -81,13 +82,20 @@ export default function Jadwals() {
             console.log(x);
             return o;
         });
-        setDatas(result);
+        const result2 = result.map(function(el, x = 0) {
+            var o = Object.assign({}, el);
+            o.avatar_url = c[x];
+            x++;
+            console.log(x);
+            return o;
+        });
+        setDatas(result2);
         console.log(currentWeek);
         // const c = [...a, ...b];
         // console.log(a);
         // console.log(b);
         // console.log(c);
-        console.log(result);
+        console.log(result2);
     };
 
     const currentWeek = dayjs(Date.now()).week();
@@ -134,7 +142,8 @@ export default function Jadwals() {
                         username,
                         id,
                         tanggal,
-                        jam
+                        jam,
+                        avatar_url
                     } = data;
                     {
                         if (dayjs(tanggal).day() === 1) {
@@ -179,7 +188,7 @@ export default function Jadwals() {
 
                                             <CardMedia
                                                 className={classes.cover}
-                                                image={avatar}
+                                                image={avatar_url}
                                                 title={type}
                                             />
                                         </Card>
@@ -203,7 +212,8 @@ export default function Jadwals() {
                         username,
                         id,
                         tanggal,
-                        jam
+                        jam,
+                        avatar_url
                     } = data;
                     {
                         if (dayjs(tanggal).day() === 2) {
@@ -248,7 +258,7 @@ export default function Jadwals() {
 
                                             <CardMedia
                                                 className={classes.cover}
-                                                image={avatar}
+                                                image={avatar_url}
                                                 title={type}
                                             />
                                         </Card>
@@ -272,7 +282,8 @@ export default function Jadwals() {
                         username,
                         id,
                         tanggal,
-                        jam
+                        jam,
+                        avatar_url
                     } = data;
                     {
                         if (dayjs(tanggal).day() === 3) {
@@ -317,7 +328,7 @@ export default function Jadwals() {
 
                                             <CardMedia
                                                 className={classes.cover}
-                                                image={avatar}
+                                                image={avatar_url}
                                                 title={type}
                                             />
                                         </Card>
@@ -341,7 +352,8 @@ export default function Jadwals() {
                         username,
                         id,
                         tanggal,
-                        jam
+                        jam,
+                        avatar_url
                     } = data;
                     {
                         if (dayjs(tanggal).day() === 4) {
@@ -386,7 +398,7 @@ export default function Jadwals() {
 
                                             <CardMedia
                                                 className={classes.cover}
-                                                image={avatar}
+                                                image={avatar_url}
                                                 title={type}
                                             />
                                         </Card>
@@ -410,7 +422,8 @@ export default function Jadwals() {
                         username,
                         id,
                         tanggal,
-                        jam
+                        jam,
+                        avatar_url
                     } = data;
                     {
                         if (dayjs(tanggal).day() === 5) {
@@ -455,7 +468,7 @@ export default function Jadwals() {
 
                                             <CardMedia
                                                 className={classes.cover}
-                                                image={avatar}
+                                                image={avatar_url}
                                                 title={type}
                                             />
                                         </Card>
